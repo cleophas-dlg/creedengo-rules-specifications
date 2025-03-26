@@ -20,3 +20,35 @@ for var in [var2 for var2 in range(100)]:
 for var in (var2 for var2 in range(100)):
     ...
 ----
+
+== Our analysis
+
+_The following results have been obtained through local experiments._
+credit: https://github.com/AghilesAzzoug[AZZOUG Aghiles]
+
+=== Configuration
+* 12th Gen Intel Core I7-12700H
+* 16 Gb RAM (4800 Mhz)
+*  Windows 11 OS version 22H2
+* Python 3.9.15
+* memory_profiler==0.61.0 (for RAM experiments)
+* codecarbon==2.1.4 (for CO2 emissions)
+
+
+=== Impact Analysis
+
+Local experiments on list comprehensions vs generator expression gives the following results on:
+
+1/ Memory usage
+
+image::GCI404_memory_usage.png[Memory Usage Graph]
+
+2/ CO2 emissions
+
+image::GCI404_co2_emission.png[Carbon Emissions Graph]
+
+=== Conclusion 
+For both metrics, the bigger the list, the greater is the gain is. The generator expression is more memory-efficient and has a lower carbon footprint than the list comprehension. 
+
+=== References 
+* https://github.com/green-code-initiative/creedengo-rules-specifications/pull/152
